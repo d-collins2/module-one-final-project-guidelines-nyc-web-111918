@@ -18,9 +18,6 @@ injury2 = Injury.create(:name=>"injury2")
 injury3 = Injury.create(:name=>"injury3")
 injury4 = Injury.create(:name=>"injury4")
 
-#injury is the joiner
-#each injury belongs to one athlete
-
 athlete1.injuries << injury1
 athlete1.injuries << injury3
 athlete2.injuries << injury2
@@ -30,5 +27,5 @@ event1.injuries << injury2
 event2.injuries << injury3
 
 #recognizes that the injuries have been implanted
-#must define the variable athlete1 = Athlete.all[0]
-#athlete1.injuries works
+#must define the variable athlete1 = Athlete.all[0] in rake console
+#athlete1.injuries works!
