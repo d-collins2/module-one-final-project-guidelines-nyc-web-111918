@@ -8,12 +8,10 @@ require 'pry'
 #   JSON.parse(response_string)
 # end
 
-
 def player_information(url)
   #makes full name of athlete using firstName, lastName
   #from athlete_hash
   players_hash = {}
-
   # players = response_hash(url)
   players = url
   # binding.pry
@@ -25,7 +23,7 @@ def player_information(url)
     players_hash[full_name] << player[:currentTeam][:abbreviation]
   end
   players_hash
-  binding.pry
+  # binding.pry
 end
 #example returns
 #=> {"Chris Boucher"=>["sprained left ankle", "GSW"],
