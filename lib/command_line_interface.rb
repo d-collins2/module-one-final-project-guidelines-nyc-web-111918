@@ -2,7 +2,7 @@
 
 def welcome
 
-  puts "                  Welcome!"
+  puts "Welcome!"
   menu
   input = gets.chomp
 
@@ -22,7 +22,8 @@ def welcome
 end
 
 def menu
-  puts "                  MAIN MENU"
+  puts "MAIN MENU"
+  puts " "
   puts "Please enter your option"
   array_of_options = ["Search by Athlete", "Search by Events", "Search by Injuries", "See all Data", "Exit"]
   array_of_options.each_with_index do |option, index|
