@@ -80,8 +80,7 @@ url = {
   ]
 }
 # player_information(url)
-# puts "HELLO WORLD"
-
+system("clear")
 welcome
 
 
@@ -96,3 +95,4 @@ welcome
 
 #Chris Boucher
 #Andre Iguodala
+puts "Goodbye!"

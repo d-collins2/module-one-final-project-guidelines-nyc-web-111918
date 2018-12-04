@@ -6,8 +6,11 @@ class Event < ActiveRecord::Base
     Event.all.each do |event|
       if event.name.downcase == event_name
         event.injuries.each do |injury|
-          binding.pry
+          # binding.pry
+          system("clear")
+          puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
           puts injury.name.camelcase
+          puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
         end
       end
     end

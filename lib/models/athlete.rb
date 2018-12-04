@@ -6,7 +6,10 @@ class Athlete < ActiveRecord::Base
     Athlete.all.find do |athlete|
       if athlete.name.downcase == athlete_name
         athlete.injuries.each do |injury|
+          system("clear")
+          puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
           puts injury.name.camelcase
+          puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
         end
       end
     end
