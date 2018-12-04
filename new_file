@@ -1,0 +1,26 @@
+class CreateAthletes < ActiveRecord::Migration[5.2]
+  def change
+    create_table :athletes do |t|
+      t.string :name
+      t.string :team
+    end
+  end
+end
+
+class CreateEvents < ActiveRecord::Migration[5.2]
+  def change
+    create_table :events do |t|
+      t.string :name
+      t.datetime
+    end
+  end
+end
+
+class CreateInjuries < ActiveRecord::Migration[5.2]
+  def change
+    create_table :injuries do |t|
+      t.integer :athlete_id
+      t.integer :event_id
+    end
+  end
+end
