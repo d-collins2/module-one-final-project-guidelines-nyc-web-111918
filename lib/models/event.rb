@@ -8,9 +8,9 @@ class Event < ActiveRecord::Base
         event.injuries.each do |injury|
           # binding.pry
           system("clear")
-          puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
+          puts "---------------------------------------------"
           puts injury.name.camelcase
-          puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
+          puts "---------------------------------------------"
         end
       end
     end

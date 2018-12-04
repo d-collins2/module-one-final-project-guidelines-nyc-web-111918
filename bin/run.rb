@@ -81,6 +81,7 @@ url = {
 }
 # player_information(url)
 system("clear")
+puts "---------------------------------------------"
 welcome
 
 
