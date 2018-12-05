@@ -7,9 +7,8 @@ class Event < ActiveRecord::Base
     Event.all.each do |event|
       if event.name.downcase == event_name
         event.injuries.each do |injury|
-          # binding.pry
-          # system("clear")
-          # puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
+          system("clear")
+          puts ""
           puts injury.name.camelcase
           puts "     occurred at #{injury.event.name}"
           puts "          on #{injury.event.date_occurred}"
@@ -18,6 +17,11 @@ class Event < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def self.get_event_names
+    sorted = self.all.sort_by{|event| event.name}
+    sorted.each { |event| puts "* #{event.name}" }
   end
 
 end #end of Event class

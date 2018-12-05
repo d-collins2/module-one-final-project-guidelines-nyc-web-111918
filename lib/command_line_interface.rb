@@ -1,4 +1,4 @@
-# require_all '../models/'
+require_relative "command_line_menu"
 
 def welcome
   puts ""
@@ -24,7 +24,8 @@ def welcome
   end
 end
 
-def menu
+
+def main_menu
   puts "            MAIN MENU"
   puts "     please choose an option"
   array_of_options = ["search by athlete", "search by event", "search by injury", "see all data", "export all data to text file", "search by date", "exit"]
@@ -53,20 +54,19 @@ def get_event_from_user
   welcome
 end
 
-def get_injuries
-  # system("clear")
+def get_all_info_menu
   puts ""
-  puts "please enter an injury:"
-  injury_name = gets.chomp.downcase
-  Injury.get_info(injury_name)
-  welcome
+  puts "        please choose an option"
+  options = ["athlete information", "event information", "injury information", "see all data", "main menu"]
+  array_of_options(options)
+  get_all_info_menu_options
+  system("clear")
 end
 
-def get_all_info
-  # system("clear")
-  puts ""
-  Injury.return_all_info
-  welcome
+def array_of_options(options)
+  options.each_with_index do |option, index|
+    puts "[#{index + 1}]....................#{option}"
+  end
 end
 
 def export_data_to_txt_file

@@ -6,7 +6,7 @@ class Injury < ActiveRecord::Base
     puts "" #here for formatting
     Injury.all.find do |injury|
       if injury.name.downcase == injury_name
-        # system("clear")
+        system("clear")
         puts "#{injury.name}"
         puts "     athlete afflicted: #{injury.athlete.name}"
         puts "          event occurred at: #{injury.event.name}"
@@ -15,9 +15,15 @@ class Injury < ActiveRecord::Base
     end
   end
 
+  def self.only_injury_info
+    sorted = self.all.sort_by {|injury| injury.name }
+    sorted.each {|injury| puts "* #{injury.name}"}
+  end
+
   def self.return_all_info
-    Injury.all.each do |injury|
-      puts "#{injury.athlete.name}"
+    sorted = self.all.sort_by {|injury| injury.athlete.name }
+    sorted.each do |injury|
+      puts "* #{injury.athlete.name}"
       puts "     injury: #{injury.name}"
       puts "          event sustained: #{injury.event.name}"
       puts "               occurred on: #{injury.event.date_occurred}"
