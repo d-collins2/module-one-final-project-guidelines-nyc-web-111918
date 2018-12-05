@@ -42,16 +42,7 @@ url = {
     }
   ]
 }
-# player_information(url)
 system("clear")
 welcome
 
-# event = get_athlete_from_user
-# Event.get_injuries(event)
-
-#make new method that takes in string and finds the object associated with it
-# show_character_movies(character)
-
-#Chris Boucher
-#Andre Iguodala
 puts "Goodbye!"

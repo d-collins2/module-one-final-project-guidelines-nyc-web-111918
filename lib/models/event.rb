@@ -23,4 +23,8 @@ class Event < ActiveRecord::Base
     sorted.each { |event| puts "* #{event.name}" }
   end
 
+  def self.get_date
+    sorted = self.all.sort_by{|event| event.date_occurred}.reverse
+    sorted.each { |event| puts "* #{event.date_occurred}" }
+  end
 end #end of Event class
