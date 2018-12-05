@@ -120,6 +120,4 @@ def get_all_info_menu
   end
   get_all_info_menu_options
   system("clear")
-  # get_athlete_info
-  # get_all_info
 end
