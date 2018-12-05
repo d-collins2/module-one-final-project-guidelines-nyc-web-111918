@@ -11,6 +11,9 @@ class Event < ActiveRecord::Base
           # system("clear")
           # puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
           puts injury.name.camelcase
+          puts "     occurred at #{injury.event.name}"
+          puts "          on #{injury.event.date_occurred}"
+          puts "               sustained by #{injury.athlete.name}"
           # puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
         end
       end

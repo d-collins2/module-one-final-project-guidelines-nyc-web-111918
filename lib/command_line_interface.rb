@@ -16,8 +16,10 @@ def welcome
     get_all_info
   elsif input == "5" || input == "export all data to text file" || input == "export"
     export_data_to_txt_file
-  elsif input == "6" || input == "exit"
-    puts "Goodbye!"
+  elsif input == "6" || input == "search by date" || input == "date"
+    get_info_by_date
+  elsif input == "7" || input == "exit"
+    puts "goodbye"
     exit
   end
 end
@@ -25,7 +27,7 @@ end
 def menu
   puts "            MAIN MENU"
   puts "     please choose an option"
-  array_of_options = ["search by athlete", "search by event", "search by injury", "see all data", "export all data to text file", "exit"]
+  array_of_options = ["search by athlete", "search by event", "search by injury", "see all data", "export all data to text file", "search by date", "exit"]
   array_of_options.each_with_index do |option, index|
     puts "[#{index + 1}]....................#{option}"
   end
@@ -71,5 +73,13 @@ def export_data_to_txt_file
   puts ""
   Injury.export_data_to_txt_file
   # Dir.glob("a_directory/*/").max_by {|f| File.mtime(f)}
+  welcome
+end
+
+def get_info_by_date
+  puts ""
+  puts "please enter a date in YYYY-MM-DD format:"
+  date = gets.chomp.downcase
+  Injury.search_by_date(date)
   welcome
 end

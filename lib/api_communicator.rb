@@ -18,7 +18,10 @@ def player_information(url)
     full_name = "#{player[:firstName]} #{player[:lastName]}"
     players_hash[full_name] = []
     players_hash[full_name] << player[:currentInjury][:description]
+    players_hash[full_name] << player[:currentInjury][:eventOccurred]
+    players_hash[full_name] << player[:currentInjury][:dateOccurred]
     players_hash[full_name] << player[:currentTeam][:abbreviation]
+    binding.pry
   end
   players_hash
 end

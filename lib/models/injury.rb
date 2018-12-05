@@ -20,6 +20,7 @@ class Injury < ActiveRecord::Base
       puts "#{injury.athlete.name}"
       puts "     injury: #{injury.name}"
       puts "          event sustained: #{injury.event.name}"
+      puts "               occurred on: #{injury.event.date_occurred}"
     end
   end
 
@@ -37,6 +38,18 @@ class Injury < ActiveRecord::Base
     end
 
     File.open("injuries_data.txt", "w") { |datafile| datafile.puts injury_strings }
+  end
+
+  def self.search_by_date(date)
+    puts ""
+    Injury.all.each do |injury|
+      if injury.event.date_occurred == date
+        puts "#{injury.event.date_occurred}"
+        puts "     injury: #{injury.name}"
+        puts "          event sustained: #{injury.event.name}"
+        puts "               athlete: #{injury.athlete.name}"
+      end
+    end
   end
   # binding.pry
 end #end of Injury class

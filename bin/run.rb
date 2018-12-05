@@ -7,16 +7,11 @@ url = {
   "lastUpdatedOn": "2018-08-28T14:54:03.026Z",
   "players": [
     {
-      "id": 13766,
       "firstName": "Chris",
       "lastName": "Boucher",
-      "primaryPosition": "PF",
-      "jerseyNumber": 25,
       "currentTeam": {
-        "id": 101,
         "abbreviation": "GSW"
       },
-      "currentRosterStatus": "ROSTER",
       "currentInjury": {
         "description": "sprained left ankle",
         "playingProbability": "OUT"
@@ -27,54 +22,23 @@ url = {
       "age": 25,
       "birthCity": "Castries",
       "birthCountry": "Saint Lucia",
-      "rookie": false,
-      "highSchool": "Damase Boulanger",
-      "college": "University of Oregon",
-      "handedness": {
-        "shoots": nil
-      },
-      "officialImageSrc": nil,
-      "socialMediaAccounts": [
-        {
-          "mediaType": "TWITTER",
-          "value": "chrisboucher"
-        }
-      ]
     },
     {
-      "id": 9223,
-      "firstName": "Andre",
-      "lastName": "Iguodala",
-      "primaryPosition": "SF",
-      "jerseyNumber": 9,
+      "firstName": "Fake",
+      "lastName": "Name",
       "currentTeam": {
-        "id": 101,
         "abbreviation": "GSW"
       },
-      "currentRosterStatus": "ROSTER",
       "currentInjury": {
-        "description": "right leg contusion",
-        "playingProbability": "QUESTIONABLE"
+        "description": "broken pelvis",
+        "playingProbability": "OUT"
       },
-      "height": "6'6\"",
-      "weight": 215,
-      "birthDate": "1984-01-28",
-      "age": 34,
-      "birthCity": "Springfield, IL",
-      "birthCountry": "USA",
-      "rookie": false,
-      "highSchool": "Lanphier",
-      "college": "University of Arizona",
-      "handedness": {
-        "shoots": "R"
-      },
-      "officialImageSrc": nil,
-      "socialMediaAccounts": [
-        {
-          "mediaType": "TWITTER",
-          "value": "andre"
-        }
-      ]
+      "height": "6'2\"",
+      "weight": 185,
+      "birthDate": "1993-01-09",
+      "age": 23,
+      "birthCity": "New York",
+      "birthCountry": "Mars",
     }
   ]
 }

@@ -11,87 +11,90 @@ url = {
   "lastUpdatedOn": "2018-08-28T14:54:03.026Z",
   "players": [
     {
-      "id": 13766,
       "firstName": "Chris",
       "lastName": "Boucher",
-      "primaryPosition": "PF",
-      "jerseyNumber": 25,
       "currentTeam": {
-        "id": 101,
         "abbreviation": "GSW"
       },
-      "currentRosterStatus": "ROSTER",
       "currentInjury": {
         "description": "sprained left ankle",
-        "playingProbability": "OUT"
+        "eventOccurred": "GSW vs Lakers game",
+        "dateOccurred": "2018-10-15"
       },
-      "height": "6'10\"",
+      "height": "6'10",
       "weight": 200,
       "birthDate": "1993-01-09",
       "age": 25,
       "birthCity": "Castries",
       "birthCountry": "Saint Lucia",
-      "rookie": false,
-      "highSchool": "Damase Boulanger",
-      "college": "University of Oregon",
-      "handedness": {
-        "shoots": nil
-      },
-      "officialImageSrc": nil,
-      "socialMediaAccounts": [
-        {
-          "mediaType": "TWITTER",
-          "value": "chrisboucher"
-        }
-      ]
     },
     {
-      "id": 9223,
-      "firstName": "Andre",
-      "lastName": "Iguodala",
-      "primaryPosition": "SF",
-      "jerseyNumber": 9,
+      "firstName": "Mr.",
+      "lastName": "Basketball",
       "currentTeam": {
-        "id": 101,
-        "abbreviation": "GSW"
+        "abbreviation": "Lakers"
       },
-      "currentRosterStatus": "ROSTER",
       "currentInjury": {
-        "description": "right leg contusion",
-        "playingProbability": "QUESTIONABLE"
+        "description": "broken pelvis",
+        "eventOccurred": "GSW vs Lakers game",
+        "dateOccurred": "2018-10-15"
       },
-      "height": "6'6\"",
-      "weight": 215,
-      "birthDate": "1984-01-28",
-      "age": 34,
-      "birthCity": "Springfield, IL",
+      "height": "6'2",
+      "weight": 185,
+      "birthDate": "1993-01-09",
+      "age": 23,
+      "birthCity": "New York",
+      "birthCountry": "Mars",
+    },
+    {
+      "firstName": "John",
+      "lastName": "Martinez",
+      "currentTeam": {
+        "abbreviation": "Byakkokan Dojo"
+      },
+      "currentInjury": {
+        "description": "snapped pinky",
+        "eventOccurred": "Longpoint 2019",
+        "dateOccurred": "2019-02-13"
+      },
+      "height": "5'5",
+      "weight": 140,
+      "birthDate": "1987-09-17",
+      "age": 31,
+      "birthCity": "New Brunswick",
       "birthCountry": "USA",
-      "rookie": false,
-      "highSchool": "Lanphier",
-      "college": "University of Arizona",
-      "handedness": {
-        "shoots": "R"
+    },
+    {
+      "firstName": "Dr.",
+      "lastName": "Kill",
+      "currentTeam": {
+        "abbreviation": "Metro Hospital"
       },
-      "officialImageSrc": nil,
-      "socialMediaAccounts": [
-        {
-          "mediaType": "TWITTER",
-          "value": "andre"
-        }
-      ]
+      "currentInjury": {
+        "description": "cotton swab stuck in ear",
+        "eventOccurred": "cotton swab murders",
+        "dateOccurred": "1983-01-13"
+      },
+      "height": "4'11",
+      "weight": 100,
+      "birthDate": "1987-09-17",
+      "age": 80,
+      "birthCity": "Chicago",
+      "birthCountry": "The Moon",
     }
   ]
-} #hash of the player_information
+}
+ #hash of the player_information
 
 def create_athlete(url)
   some_variable = player_information(url)
 
   some_variable.each do |athlete, data|
-    binding.pry
-    athlete = Athlete.create(:name=>athlete, :team=>data[1])
+    # binding.pry
+    athlete = Athlete.create(:name=>athlete, :team=>data[3])
     injury = Injury.create(:name=>data[0])
-    event = Event.create(:name=>"Pro Basketball Game")
-
+    event = Event.create(:name=>data[1], :date_occurred=>data[2])
+binding.pry
     athlete.injuries << injury
     event.injuries << injury
   end
