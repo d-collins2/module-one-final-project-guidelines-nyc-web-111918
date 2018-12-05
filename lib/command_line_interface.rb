@@ -3,7 +3,7 @@
 def welcome
   puts ""
   puts "welcome to the ______ program"
-  menu
+  main_menu
   input = gets.chomp
 
   if input == "1" || input == "search by athlete" || input == "athlete"
@@ -13,14 +13,14 @@ def welcome
   elsif input == "3" || input == "search by injuries" || input == "injuries"
     get_injuries
   elsif input == "4" || input == "see all data" || input == "all"
-    get_all_info
+    get_all_info_menu
   elsif input == "5" || input == "exit"
     puts "Goodbye!"
     exit
   end
 end
 
-def menu
+def main_menu
   puts "            MAIN MENU"
   puts "     please choose an option"
   array_of_options = ["search by athlete", "search by event", "search by injury", "see all data", "exit"]
@@ -30,7 +30,7 @@ def menu
 end
 
 def get_athlete_from_user
-  # system("clear")
+  system("clear")
   puts ""
   puts "please enter an athlete's name:"
   # use gets to capture the user's input. This method should return that input, downcased.
@@ -40,7 +40,7 @@ def get_athlete_from_user
 end
 
 def get_event_from_user
-  # system("clear")
+  system("clear")
   puts ""
   puts "please enter an event's name:"
   # use gets to capture the user's input. This method should return that input, downcased.
@@ -50,7 +50,7 @@ def get_event_from_user
 end
 
 def get_injuries
-  # system("clear")
+  system("clear")
   puts ""
   puts "please enter an injury:"
   injury_name = gets.chomp.downcase
@@ -59,8 +59,67 @@ def get_injuries
 end
 
 def get_all_info
-  # system("clear")
+  system("clear")
   puts ""
   Injury.return_all_info
-  welcome
+  puts ""
+  get_all_info_menu
+end
+
+def get_athlete_info
+  system("clear")
+  puts ""
+  Athlete.get_player_names
+  puts ""
+end
+
+def get_event_info
+  system("clear")
+  puts ""
+  Event.get_event_names
+  puts ""
+end
+
+def get_injuries_info
+  system("clear")
+  puts ""
+  Injury.only_injury_info
+  puts ""
+end
+
+def get_all_info_menu_options
+  input = gets.chomp
+
+  if input == "1" || input == "athlete information" || input == "athlete"
+    get_athlete_info
+    puts " "
+    get_all_info_menu
+  elsif input == "2" || input == "event information" || input == "event"
+    get_event_info
+    puts " "
+    get_all_info_menu
+  elsif input == "3" || input == "injury information" || input == "injuries"
+    get_injuries_info
+    puts " "
+    get_all_info_menu
+  elsif input == "4" || input == "see all data" || input == "all"
+    get_all_info
+    puts " "
+    get_all_info_menu
+  elsif input == "5" || input == "main menu" || input == "menu"
+    system("clear")
+    welcome
+  end
+end
+
+def get_all_info_menu
+  puts "     please choose an option"
+  array_of_options = ["athlete information", "event information", "injury information", "see all data", "main menu"]
+  array_of_options.each_with_index do |option, index|
+    puts "[#{index + 1}]....................#{option}"
+  end
+  get_all_info_menu_options
+  system("clear")
+  # get_athlete_info
+  # get_all_info
 end
