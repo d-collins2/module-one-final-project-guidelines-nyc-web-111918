@@ -3,7 +3,6 @@ require_relative '../lib/api_communicator.rb'
 require_relative "../lib/command_line_interface.rb"
 
 # url = 'https://api.mysportsfeeds.com/v2.0/pull/nba/injuries.json'
-
 url = {
   "lastUpdatedOn": "2018-08-28T14:54:03.026Z",
   "players": [
@@ -83,15 +82,11 @@ url = {
 system("clear")
 welcome
 
-
 # event = get_athlete_from_user
 # Event.get_injuries(event)
 
-
-
 #make new method that takes in string and finds the object associated with it
 # show_character_movies(character)
-
 
 #Chris Boucher
 #Andre Iguodala

@@ -1,7 +1,8 @@
 # require_all '../models/'
 
 def welcome
-  puts "Welcome!"
+  puts ""
+  puts "welcome to the ______ program"
   menu
   input = gets.chomp
 
@@ -20,17 +21,18 @@ def welcome
 end
 
 def menu
-  puts "MAIN MENU"
-  puts "Please enter your option"
-  array_of_options = ["Search by Athlete", "Search by Events", "Search by Injuries", "See all Data", "exit"]
+  puts "            MAIN MENU"
+  puts "     please choose an option"
+  array_of_options = ["search by athlete", "search by event", "search by injury", "see all data", "exit"]
   array_of_options.each_with_index do |option, index|
-    puts "[#{index + 1}] #{option}"
+    puts "[#{index + 1}]....................#{option}"
   end
 end
 
 def get_athlete_from_user
-  system("clear")
-  puts "please enter an athlete's name"
+  # system("clear")
+  puts ""
+  puts "please enter an athlete's name:"
   # use gets to capture the user's input. This method should return that input, downcased.
   athlete_name = gets.chomp.downcase
   Athlete.get_injuries(athlete_name)
@@ -38,8 +40,9 @@ def get_athlete_from_user
 end
 
 def get_event_from_user
-  system("clear")
-  puts "please enter an event's name"
+  # system("clear")
+  puts ""
+  puts "please enter an event's name:"
   # use gets to capture the user's input. This method should return that input, downcased.
   event_name = gets.chomp.downcase
   Event.get_injuries(event_name)
@@ -47,16 +50,17 @@ def get_event_from_user
 end
 
 def get_injuries
-  system("clear")
-  puts "please enter an injury"
-
+  # system("clear")
+  puts ""
+  puts "please enter an injury:"
   injury_name = gets.chomp.downcase
   Injury.get_info(injury_name)
   welcome
 end
 
 def get_all_info
-  system("clear")
+  # system("clear")
+  puts ""
   Injury.return_all_info
   welcome
 end
