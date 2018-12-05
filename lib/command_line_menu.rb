@@ -2,8 +2,9 @@
 
 def menu_options
   input = gets.chomp
-
+  clear_f
   if input == "1" || input == "search by athlete" || input == "athlete"
+    clear_f
     get_athlete_from_user
   elsif input == "2" || input == "search by event" || input == "event"
     get_event_from_user
@@ -23,24 +24,27 @@ end
 
 def get_all_info_menu_options
   input = gets.chomp
-
+  clear_f
   if input == "1" || input == "athlete information" || input == "athlete"
+    clear_f
     get_athlete_info
   elsif input == "2" || input == "event information" || input == "event"
+    clear_f
     get_event_info
   elsif input == "3" || input == "injury information" || input == "injuries"
+    clear_f
     get_injuries_info
   elsif input == "4" || input == "see all data" || input == "all"
+    clear_f
     get_all_info
   elsif input == "5" || input == "main menu" || input == "menu"
     system("clear")
-    welcome
+    main_menu
   end
 end
 
 # ------> Information <------
 def get_athlete_from_user
-  clear_f
   puts "please enter an athlete's name:"
   # use gets to capture the user's input. This method should return that input, downcased.
   athlete_name = gets.chomp.downcase
@@ -49,7 +53,6 @@ def get_athlete_from_user
 end
 
 def get_event_from_user
-  clear_f
   puts "please enter an event's name:"
   # use gets to capture the user's input. This method should return that input, downcased.
   event_name = gets.chomp.downcase
@@ -58,7 +61,6 @@ def get_event_from_user
 end
 
 def get_injuries
-  clear_f
   puts "please enter an injury:"
   injury_name = gets.chomp.downcase
   Injury.get_info(injury_name)
@@ -81,29 +83,57 @@ end
 # ------> Information End <------
 
 # ------> All Data Lists <------
+def search
+  puts "Would you like to search current list?(Y / N)"
+  input = gets.chomp.downcase
+end
 
 def get_all_info
   clear_f
   Injury.return_all_info
-  get_menu
+  get_info_menu
 end
 
 def get_athlete_info
-  clear_f
   Athlete.get_player_names
-  get_menu
+  input = search
+  if input == "y"
+    clear_f
+    Athlete.get_player_names
+    get_athlete_from_user
+  else
+    clear_f
+    Athlete.get_player_names
+    get_info_menu
+  end
 end
 
 def get_event_info
-  clear_f
   Event.get_event_names
-  get_menu
+  input = search
+  if input == "y"
+    clear_f
+    Event.get_event_names
+    get_event_from_user
+  else
+    clear_f
+    Event.get_event_names
+    get_info_menu
+  end
 end
 
 def get_injuries_info
-  clear_f
   Injury.only_injury_info
-  get_menu
+  input = search
+  if input == "y"
+    clear_f
+    Injury.only_injury_info
+    get_injuries
+  else
+    clear_f
+    Injury.only_injury_info
+    get_info_menu
+  end
 end
 #------>End All Data Lists <------
 
@@ -113,7 +143,7 @@ def clear_f
   puts ""
 end
 
-def get_menu
+def get_info_menu
   puts ""
   get_all_info_menu
 end

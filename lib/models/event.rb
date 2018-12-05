@@ -13,14 +13,13 @@ class Event < ActiveRecord::Base
           puts "     occurred at #{injury.event.name}"
           puts "          on #{injury.event.date_occurred}"
           puts "               sustained by #{injury.athlete.name}"
-          # puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
         end
       end
     end
   end
 
   def self.get_event_names
-    sorted = self.all.sort_by{|event| event.name}
+    sorted = self.all.sort_by{|event| event.name.downcase}
     sorted.each { |event| puts "* #{event.name}" }
   end
 

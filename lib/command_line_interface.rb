@@ -30,10 +30,3 @@ def array_of_options(options)
     puts "[#{index + 1}]....................#{option}"
   end
 end
-
-def export_data_to_txt_file
-  puts ""
-  Injury.export_data_to_txt_file
-  # Dir.glob("a_directory/*/").max_by {|f| File.mtime(f)}
-  welcome
-end

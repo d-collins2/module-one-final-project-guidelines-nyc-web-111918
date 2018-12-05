@@ -15,7 +15,7 @@ class Athlete < ActiveRecord::Base
   end
 
   def self.get_player_names
-    sorted = self.all.sort_by{|event| event.name}
+    sorted = self.all.sort_by{|event| event.name.downcase}
     sorted.each { |player| puts "* #{player.name}" }
   end
 

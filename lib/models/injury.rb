@@ -16,7 +16,7 @@ class Injury < ActiveRecord::Base
   end
 
   def self.only_injury_info
-    sorted = self.all.sort_by {|injury| injury.name }
+    sorted = self.all.sort_by {|injury| injury.name.downcase }
     sorted.each {|injury| puts "* #{injury.name}"}
   end
 
@@ -60,5 +60,4 @@ class Injury < ActiveRecord::Base
       end
     end
   end
-  # binding.pry
 end #end of Injury class
