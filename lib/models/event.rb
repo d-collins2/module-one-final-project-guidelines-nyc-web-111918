@@ -7,12 +7,15 @@ class Event < ActiveRecord::Base
     Event.all.each do |event|
       if event.name.downcase == event_name
         event.injuries.each do |injury|
+
           puts <<~HEREDOC
           * #{injury.event.name}
                injuries: #{injury.name}
                     date: #{injury.event.date_occurred}
                          athlete: #{injury.athlete.name}
           HEREDOC
+
+    
         end
       end
     end

@@ -79,5 +79,4 @@ class Injury < ActiveRecord::Base
       end
     end
   end
-  # binding.pry
 end #end of Injury class
