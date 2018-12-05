@@ -7,15 +7,12 @@ class Event < ActiveRecord::Base
     Event.all.each do |event|
       if event.name.downcase == event_name
         event.injuries.each do |injury|
-
           puts <<~HEREDOC
           * #{injury.event.name}
                injuries: #{injury.name}
                     date: #{injury.event.date_occurred}
                          athlete: #{injury.athlete.name}
           HEREDOC
-
-    
         end
       end
     end
@@ -23,11 +20,7 @@ class Event < ActiveRecord::Base
 
   def self.get_event_names
     sorted = self.all.sort_by{|event| event.name}
-
-    sorted_events = sorted.map do |event|
-      event.name
-    end.uniq
-
-    sorted_events.each { |event_name| puts "* #{event_name}" }
+    sorted_events = sorted.map { |event| event.name}.uniq
+    sorted_events.each { |event_name| puts "* #{event_name}"}
   end
 end #end of Event class

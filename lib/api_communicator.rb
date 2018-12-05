@@ -11,10 +11,8 @@ require 'pry'
 #-------> KEEP <--------
 
 def player_information(url)
-  #makes full name of athlete using firstName, lastName
-  #from athlete_hash
   players_hash = {}
-  # players = response_hash(url)
+  # players = response_hash(url) -------------> may need this for api connection
   players = url
   players[:players].each do |player|
     full_name = "#{player[:firstName]} #{player[:lastName]}"
@@ -31,5 +29,3 @@ def player_information(url)
   players_hash
 
 end #example returns
-#=> {"Chris Boucher"=>["sprained left ankle", "GSW"],
- #"Andre Iguodala"=>["right leg contusion", "GSW"]}

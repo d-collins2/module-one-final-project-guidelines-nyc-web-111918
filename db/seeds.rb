@@ -107,53 +107,19 @@ url = {
   ]
 }
  #hash of the player_information
-
 def create_athlete(url)
   player_info_hash = player_information(url)
 
   player_info_hash.each do |athlete, injuries|
     athlete_instance = Athlete.create(:name=>athlete, :team=>injuries[3])
 
-
     injuries.map do |injury|
       event_instance = Event.create(:name=>injury[1], :date_occurred=>injury[2])
       injury_instance = Injury.create(:name=>injury[0])
       athlete_instance.injuries << injury_instance
       event_instance.injuries << injury_instance
-      binding.pry
     end
-    # injury = Injury.create(:name=>injuries[0])
-    # event_instance = Event.create(:name=>injuries[1], :date_occurred=>injuries[2])
-    # athlete_instance.injuries << injury
-    # event_instance.injuries << injury
   end
 end
 
 create_athlete(url)
-
-# athlete1 = Athlete.create(:name=>"athlete1", :team=>"team1")
-# athlete2 = Athlete.create(:name=>"athlete2", :team=>"team2")
-# athlete3 = Athlete.create(:name=>"athlete3", :team=>"team3")
-#
-# event1 = Event.create(:name=>"event1")
-# event2 = Event.create(:name=>"event2")
-#
-# injury1 = Injury.create(:name=>"injury1")
-# injury2 = Injury.create(:name=>"injury2")
-# injury3 = Injury.create(:name=>"injury3")
-# injury4 = Injury.create(:name=>"injury4")
-#
-# athlete1.injuries << injury1
-# athlete1.injuries << injury3
-# athlete2.injuries << injury2
-# #
-# event1.injuries << injury1
-# event1.injuries << injury2
-# event2.injuries << injury3
-
-#recognizes that the injuries have been implanted
-#must define the variable athlete1 = Athlete.all[0] in rake console
-#athlete1.injuries works!
-
-#take what full_name(url) returns
-#turn it into data that can be seeded
