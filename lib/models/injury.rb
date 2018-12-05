@@ -22,4 +22,21 @@ class Injury < ActiveRecord::Base
       puts "          event sustained: #{injury.event.name}"
     end
   end
+
+  def self.export_data_to_txt_file
+    injury_data = self.return_all_info
+    injury_strings = []
+
+    injury_data.each do |injury|
+      athlete_name = injury.athlete.name
+      injury_name = injury.name
+      event_name = injury.event.name
+
+      string = "#{athlete_name} suffered #{injury_name} at #{event_name}"
+      injury_strings << string
+    end
+
+    File.open("injuries_data.txt", "w") { |datafile| datafile.puts injury_strings }
+  end
+  # binding.pry
 end #end of Injury class

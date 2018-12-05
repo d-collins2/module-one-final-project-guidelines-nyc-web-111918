@@ -14,7 +14,9 @@ def welcome
     get_injuries
   elsif input == "4" || input == "see all data" || input == "all"
     get_all_info
-  elsif input == "5" || input == "exit"
+  elsif input == "5" || input == "export all data to text file" || input == "export"
+    export_data_to_txt_file
+  elsif input == "6" || input == "exit"
     puts "Goodbye!"
     exit
   end
@@ -23,7 +25,7 @@ end
 def menu
   puts "            MAIN MENU"
   puts "     please choose an option"
-  array_of_options = ["search by athlete", "search by event", "search by injury", "see all data", "exit"]
+  array_of_options = ["search by athlete", "search by event", "search by injury", "see all data", "export all data to text file", "exit"]
   array_of_options.each_with_index do |option, index|
     puts "[#{index + 1}]....................#{option}"
   end
@@ -62,5 +64,12 @@ def get_all_info
   # system("clear")
   puts ""
   Injury.return_all_info
+  welcome
+end
+
+def export_data_to_txt_file
+  puts ""
+  Injury.export_data_to_txt_file
+  # Dir.glob("a_directory/*/").max_by {|f| File.mtime(f)}
   welcome
 end
