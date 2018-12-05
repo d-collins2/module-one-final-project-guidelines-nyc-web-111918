@@ -10,7 +10,7 @@ def menu_options
   elsif input == "3" || input == "search by injuries" || input == "injuries"
     get_injuries
   elsif input == "4" || input == "see all data" || input == "all"
-    get_all_info_menu_options
+    get_all_info_menu
   elsif input == "5" || input == "export all data to text file" || input == "export"
     export_data_to_txt_file
   elsif input == "6" || input == "search by date" || input == "date"

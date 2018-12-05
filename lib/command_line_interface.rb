@@ -18,7 +18,7 @@ end
 
 def get_all_info_menu
   puts ""
-  puts "        please choose an option"
+  puts "        which data would you like to see?"
   options = ["athlete information", "event information", "injury information", "see all data", "main menu"]
   array_of_options(options)
   get_all_info_menu_options
