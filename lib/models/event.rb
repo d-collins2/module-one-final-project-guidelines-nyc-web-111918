@@ -9,10 +9,10 @@ class Event < ActiveRecord::Base
         event.injuries.each do |injury|
           system("clear")
           puts ""
-          puts injury.name.camelcase
-          puts "     occurred at #{injury.event.name}"
-          puts "          on #{injury.event.date_occurred}"
-          puts "               sustained by #{injury.athlete.name}"
+          puts "*#{injury.event.name}"
+          puts "     injuries: #{injury.name}"
+          puts "          date: #{injury.event.date_occurred}"
+          puts "               athlete: #{injury.athlete.name}"
           # puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
         end
       end

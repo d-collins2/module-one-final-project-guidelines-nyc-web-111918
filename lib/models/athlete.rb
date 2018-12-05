@@ -8,7 +8,10 @@ class Athlete < ActiveRecord::Base
         athlete.injuries.each do |injury|
           system("clear")
           puts ""
-          puts injury.name.camelcase
+          puts "*#{injury.athlete.name}"
+          puts "     #{injury.name.camelcase}"
+          puts "          event: #{injury.event.name}"
+          puts "               date of injury: #{injury.event.date_occurred}"
         end
       end
     end

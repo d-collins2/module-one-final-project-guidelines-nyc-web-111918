@@ -6,7 +6,6 @@ def welcome
   main_menu
 end
 
-
 def main_menu
   puts "            MAIN MENU"
   puts "     please choose an option"
@@ -19,7 +18,7 @@ end
 def get_all_info_menu
   puts ""
   puts "        which data would you like to see?"
-  options = ["athlete information", "event information", "injury information", "see all data", "main menu"]
+  options = ["see all athletes", "see all events", "see all injuries", "see all data", "main menu"]
   array_of_options(options)
   get_all_info_menu_options
   system("clear")

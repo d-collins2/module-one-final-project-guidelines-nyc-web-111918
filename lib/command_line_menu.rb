@@ -24,11 +24,11 @@ end
 def get_all_info_menu_options
   input = gets.chomp
 
-  if input == "1" || input == "athlete information" || input == "athlete"
+  if input == "1" || input == "see all athletes" || input == "athlete"
     get_athlete_info
-  elsif input == "2" || input == "event information" || input == "event"
+  elsif input == "2" || input == "see all events" || input == "event"
     get_event_info
-  elsif input == "3" || input == "injury information" || input == "injuries"
+  elsif input == "3" || input == "see all injuries" || input == "injuries"
     get_injuries_info
   elsif input == "4" || input == "see all data" || input == "all"
     get_all_info
