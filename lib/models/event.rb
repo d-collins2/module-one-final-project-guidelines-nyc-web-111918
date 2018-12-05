@@ -20,7 +20,11 @@ class Event < ActiveRecord::Base
 
   def self.get_event_names
     sorted = self.all.sort_by{|event| event.name}
-    sorted.each { |event| puts "* #{event.name}" }
-  end
 
+    sorted_events = sorted.map do |event|
+      event.name
+    end.uniq
+
+    sorted_events.each { |event_name| puts "* #{event_name}" }
+  end
 end #end of Event class

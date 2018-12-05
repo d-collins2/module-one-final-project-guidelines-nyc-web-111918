@@ -16,9 +16,19 @@ class Injury < ActiveRecord::Base
     end
   end
 
+  # def self.only_injury_info
+  #   sorted = self.all.sort_by { |injury| injury.name }
+  #   sorted.each {|injury| puts "* #{injury.name}"}
+  # end
+
   def self.only_injury_info
-    sorted = self.all.sort_by { |injury| injury.name }
-    sorted.each {|injury| puts "* #{injury.name}"}
+    sorted = self.all.sort_by{|injury| injury.name}
+
+    sorted_injuries = sorted.map do |injury|
+      injury.name
+    end.uniq
+
+    sorted_injuries.each { |injury_name| puts "* #{injury_name}" }
   end
 
   def self.return_all_info

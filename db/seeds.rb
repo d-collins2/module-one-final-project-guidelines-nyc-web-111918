@@ -24,7 +24,7 @@ url = {
         "dateOccurred": "2018-10-15"
         },
         {
-        "description": "sprained right nose",
+        "description": "ruptured face",
         "eventOccurred": "GSW vs Lakers game",
         "dateOccurred": "2018-10-15"
         }

@@ -9,7 +9,7 @@ class Athlete < ActiveRecord::Base
       # binding.pry
       if athlete.name.downcase == athlete_name
         athlete.injuries.each do |injury|
-          binding.pry
+          # binding.pry
           puts <<~HEREDOC
           * #{injury.athlete.name}
                injury:#{injury.name}
