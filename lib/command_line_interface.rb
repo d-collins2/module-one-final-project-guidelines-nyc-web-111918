@@ -36,7 +36,6 @@ def get_athlete_from_user
   system("clear")
   puts "---------------------------------------------"
   puts "Please enter an athlete's name"
-  # use gets to capture the user's input. This method should return that input, downcased.
   athlete_name = gets.chomp.downcase
   Athlete.get_injuries(athlete_name)
   welcome
@@ -46,7 +45,6 @@ def get_event_from_user
   system("clear")
   puts "---------------------------------------------"
   puts "Please enter an event's name"
-  # use gets to capture the user's input. This method should return that input, downcased.
   event_name = gets.chomp.downcase
   Event.get_injuries(event_name)
   welcome
@@ -56,7 +54,6 @@ def get_injuries
   system("clear")
   puts "---------------------------------------------"
   puts "Please enter an injury"
-
   injury_name = gets.chomp.downcase
   Injury.get_info(injury_name)
   welcome
@@ -64,6 +61,7 @@ end
 
 def get_all_info
   system("clear")
+  puts "All Info"
   Injury.return_all_info
   welcome
 end

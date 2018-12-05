@@ -1,7 +1,6 @@
 require 'rest-client'
 require 'json'
 require 'pry'
-# require_all 'lib/models'
 
 # def response_hash(url) #hash returned from the API
 #   response_string = RestClient.get(url)
@@ -14,16 +13,13 @@ def player_information(url)
   players_hash = {}
   # players = response_hash(url)
   players = url
-  # binding.pry
   players[:players].each do |player|
-    # binding.pry
     full_name = "#{player[:firstName]} #{player[:lastName]}"
     players_hash[full_name] = []
     players_hash[full_name] << player[:currentInjury][:description]
     players_hash[full_name] << player[:currentTeam][:abbreviation]
   end
   players_hash
-  # binding.pry
 end
 #example returns
 #=> {"Chris Boucher"=>["sprained left ankle", "GSW"],
