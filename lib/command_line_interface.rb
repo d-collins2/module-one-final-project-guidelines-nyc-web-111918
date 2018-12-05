@@ -58,6 +58,8 @@ def get_injuries
   welcome
 end
 
+
+#-------> See All Data Menu <-------
 def get_all_info
   system("clear")
   puts ""
@@ -121,3 +123,4 @@ def get_all_info_menu
   get_all_info_menu_options
   system("clear")
 end
+#------>End of Get All Data Menu <--------
