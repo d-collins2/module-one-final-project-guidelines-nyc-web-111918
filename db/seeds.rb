@@ -16,11 +16,19 @@ url = {
       "currentTeam": {
         "abbreviation": "GSW"
       },
-      "currentInjury": {
+      "currentInjury":
+      [
+        {
         "description": "sprained left ankle",
         "eventOccurred": "GSW vs Lakers game",
         "dateOccurred": "2018-10-15"
-      },
+        },
+        {
+        "description": "sprained right nose",
+        "eventOccurred": "GSW vs Lakers game",
+        "dateOccurred": "2018-10-15"
+        }
+      ],
       "height": "6'10",
       "weight": 200,
       "birthDate": "1993-01-09",
@@ -34,11 +42,19 @@ url = {
       "currentTeam": {
         "abbreviation": "Lakers"
       },
-      "currentInjury": {
+      "currentInjury":
+      [
+        {
         "description": "broken pelvis",
         "eventOccurred": "GSW vs Lakers game",
         "dateOccurred": "2018-10-15"
-      },
+        },
+        {
+        "description": "ruptured face",
+        "eventOccurred": "dinner at Applebee's",
+        "dateOccurred": "2018-12-05"
+        }
+      ],
       "height": "6'2",
       "weight": 185,
       "birthDate": "1993-01-09",
@@ -52,11 +68,14 @@ url = {
       "currentTeam": {
         "abbreviation": "Byakkokan Dojo"
       },
-      "currentInjury": {
+      "currentInjury":
+      [
+        {
         "description": "snapped pinky",
         "eventOccurred": "Longpoint 2019",
         "dateOccurred": "2019-02-13"
-      },
+        }
+      ],
       "height": "5'5",
       "weight": 140,
       "birthDate": "1987-09-17",
@@ -70,11 +89,14 @@ url = {
       "currentTeam": {
         "abbreviation": "Metro Hospital"
       },
-      "currentInjury": {
+      "currentInjury":
+      [
+        {
         "description": "cotton swab stuck in ear",
-        "eventOccurred": "cotton swab murders",
+        "eventOccurred": "Cotton Swab Massacre of 1983",
         "dateOccurred": "1983-01-13"
-      },
+        }
+      ],
       "height": "4'11",
       "weight": 100,
       "birthDate": "1987-09-17",
@@ -89,12 +111,21 @@ url = {
 def create_athlete(url)
   player_info_hash = player_information(url)
 
-  player_info_hash.each do |athlete, data|
-    athlete = Athlete.create(:name=>athlete, :team=>data[3])
-    injury = Injury.create(:name=>data[0])
-    event = Event.create(:name=>data[1], :date_occurred=>data[2])
-    athlete.injuries << injury
-    event.injuries << injury
+  player_info_hash.each do |athlete, injuries|
+    athlete_instance = Athlete.create(:name=>athlete, :team=>injuries[3])
+
+
+    injuries.map do |injury|
+      event_instance = Event.create(:name=>injury[1], :date_occurred=>injury[2])
+      injury_instance = Injury.create(:name=>injury[0])
+      athlete_instance.injuries << injury_instance
+      event_instance.injuries << injury_instance
+      binding.pry
+    end
+    # injury = Injury.create(:name=>injuries[0])
+    # event_instance = Event.create(:name=>injuries[1], :date_occurred=>injuries[2])
+    # athlete_instance.injuries << injury
+    # event_instance.injuries << injury
   end
 end
 

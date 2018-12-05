@@ -19,13 +19,17 @@ def player_information(url)
   players[:players].each do |player|
     full_name = "#{player[:firstName]} #{player[:lastName]}"
     players_hash[full_name] = []
-    players_hash[full_name] << player[:currentInjury][:description]
-    players_hash[full_name] << player[:currentInjury][:eventOccurred]
-    players_hash[full_name] << player[:currentInjury][:dateOccurred]
-    players_hash[full_name] << player[:currentTeam][:abbreviation]
-    binding.pry
+
+    player[:currentInjury].each_with_index do |player_injury, index|
+      players_hash[full_name] << []
+      players_hash[full_name][index] << player[:currentInjury][index][:description]
+      players_hash[full_name][index] << player[:currentInjury][index][:eventOccurred]
+      players_hash[full_name][index] << player[:currentInjury][index][:dateOccurred]
+    end
+    # players_hash[full_name] << player[:currentTeam][:abbreviation]
   end
   players_hash
+
 end #example returns
 #=> {"Chris Boucher"=>["sprained left ankle", "GSW"],
  #"Andre Iguodala"=>["right leg contusion", "GSW"]}

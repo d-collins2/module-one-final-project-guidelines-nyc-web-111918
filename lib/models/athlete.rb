@@ -5,8 +5,11 @@ class Athlete < ActiveRecord::Base
   def self.get_injuries(athlete_name)
     puts ""
     self.all.find do |athlete|
+
+      # binding.pry
       if athlete.name.downcase == athlete_name
         athlete.injuries.each do |injury|
+          binding.pry
           puts <<~HEREDOC
           * #{injury.athlete.name}
                injury:#{injury.name}
