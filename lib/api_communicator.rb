@@ -14,16 +14,16 @@ def player_information(url)
   players_hash = {}
   # players = response_hash(url)
   players = url
-  # binding.pry
   players[:players].each do |player|
-    # binding.pry
     full_name = "#{player[:firstName]} #{player[:lastName]}"
     players_hash[full_name] = []
     players_hash[full_name] << player[:currentInjury][:description]
+    players_hash[full_name] << player[:currentInjury][:eventOccurred]
+    players_hash[full_name] << player[:currentInjury][:dateOccurred]
     players_hash[full_name] << player[:currentTeam][:abbreviation]
+    binding.pry
   end
   players_hash
-  # binding.pry
 end
 #example returns
 #=> {"Chris Boucher"=>["sprained left ankle", "GSW"],
