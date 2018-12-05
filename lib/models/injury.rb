@@ -25,6 +25,7 @@ class Injury < ActiveRecord::Base
   end
 
   def self.export_data_to_txt_file
+    date = DateTime.now
     injury_data = self.return_all_info
     injury_strings = []
 
@@ -32,12 +33,14 @@ class Injury < ActiveRecord::Base
       athlete_name = injury.athlete.name
       injury_name = injury.name
       event_name = injury.event.name
+      event_date = injury.event.date_occurred
 
-      string = "#{athlete_name} suffered #{injury_name} at #{event_name}"
+      string = "#{athlete_name} suffered #{injury_name} at #{event_name} on #{event_date}"
       injury_strings << string
     end
 
-    File.open("injuries_data.txt", "w") { |datafile| datafile.puts injury_strings }
+
+    File.open("#{date}", "w") { |datafile| datafile.puts injury_strings }
   end
 
   def self.search_by_date(date)
