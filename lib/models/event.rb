@@ -3,17 +3,16 @@ class Event < ActiveRecord::Base
   has_many :athletes, through: :injuries
 
   def self.get_injuries(event_name)
-    puts "" #placed here for formatting
+    puts ""
     Event.all.each do |event|
       if event.name.downcase == event_name
         event.injuries.each do |injury|
-          system("clear")
-          puts ""
-          puts "*#{injury.event.name}"
-          puts "     injuries: #{injury.name}"
-          puts "          date: #{injury.event.date_occurred}"
-          puts "               athlete: #{injury.athlete.name}"
-          # puts "~_~_~_~_~_~_~_~_~_~_~_~_~"
+          puts <<~HEREDOC
+          * #{injury.event.name}
+               injuries: #{injury.name}
+                    date: #{injury.event.date_occurred}
+                         athlete: #{injury.athlete.name}
+          HEREDOC
         end
       end
     end

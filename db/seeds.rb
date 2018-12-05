@@ -87,14 +87,12 @@ url = {
  #hash of the player_information
 
 def create_athlete(url)
-  some_variable = player_information(url)
+  player_info_hash = player_information(url)
 
-  some_variable.each do |athlete, data|
-    # binding.pry
+  player_info_hash.each do |athlete, data|
     athlete = Athlete.create(:name=>athlete, :team=>data[3])
     injury = Injury.create(:name=>data[0])
     event = Event.create(:name=>data[1], :date_occurred=>data[2])
-binding.pry
     athlete.injuries << injury
     event.injuries << injury
   end

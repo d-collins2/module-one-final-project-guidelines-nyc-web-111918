@@ -107,7 +107,7 @@ def get_injuries_info
 end
 #------>End All Data Lists <------
 
-#------>Helper Mehtods<------
+#------>Helper Methods<------
 def clear_f
   system("clear")
   puts ""
@@ -117,4 +117,4 @@ def get_menu
   puts ""
   get_all_info_menu
 end
-#------>Helper Mehtods End<------
+#------>Helper Methods End<------

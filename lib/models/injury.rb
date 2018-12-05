@@ -3,14 +3,15 @@ class Injury < ActiveRecord::Base
   belongs_to :event
 
   def self.get_info(injury_name)
-    puts "" #here for formatting
+    puts ""
     Injury.all.find do |injury|
       if injury.name.downcase == injury_name
-        system("clear")
-        puts "*#{injury.name}"
-        puts "     athlete: #{injury.athlete.name}"
-        puts "          event: #{injury.event.name}"
-        puts "               date of injury: #{injury.event.date_occurred}"
+        puts <<~HEREDOC
+        * #{injury.name}
+             athlete: #{injury.athlete.name}
+                  event: #{injury.event.name}
+                       date of injury: #{injury.event.date_occurred}
+        HEREDOC
       end
     end
   end
@@ -23,10 +24,12 @@ class Injury < ActiveRecord::Base
   def self.return_all_info
     sorted = self.all.sort_by { |injury| injury.athlete.name }
     sorted.each do |injury|
-      puts "* #{injury.athlete.name}"
-      puts "     injury: #{injury.name}"
-      puts "          event: #{injury.event.name}"
-      puts "               date of injury: #{injury.event.date_occurred}"
+    puts <<~HEREDOC
+      * #{injury.athlete.name}
+           injury: #{injury.name}
+                event: #{injury.event.name}
+                     date of injury: #{injury.event.date_occurred}
+      HEREDOC
     end
   end
 
@@ -41,17 +44,14 @@ class Injury < ActiveRecord::Base
       event_name = injury.event.name
       event_date = injury.event.date_occurred
 
-      # string = "#{athlete_name} suffered #{injury_name} at #{event_name} on #{event_date}"
       string = <<~HEREDOC
-      *#{athlete_name}
+      * #{athlete_name}
            injury: #{injury_name}
                 event: #{event_name}
                      date of injury: #{event_date}
       HEREDOC
       injury_strings << string
-
     end
-
     File.open("#{date}", "w") { |datafile| datafile.puts injury_strings }
   end
 
@@ -59,10 +59,13 @@ class Injury < ActiveRecord::Base
     puts ""
     Injury.all.each do |injury|
       if injury.event.date_occurred == date
-        puts "*#{injury.event.date_occurred}"
-        puts "     injury: #{injury.name}"
-        puts "          event: #{injury.event.name}"
-        puts "               athlete: #{injury.athlete.name}"
+        puts <<~HEREDOC
+        * #{injury.event.date_occurred}
+             injury: #{injury.name}
+                  event: #{injury.event.name}
+                       athlete: #{injury.athlete.name}
+        HEREDOC
+
       end
     end
   end

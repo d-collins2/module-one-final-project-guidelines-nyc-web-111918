@@ -3,15 +3,16 @@ class Athlete < ActiveRecord::Base
   has_many :events, through: :injuries
 
   def self.get_injuries(athlete_name)
+    puts ""
     self.all.find do |athlete|
       if athlete.name.downcase == athlete_name
         athlete.injuries.each do |injury|
-          system("clear")
-          puts ""
-          puts "*#{injury.athlete.name}"
-          puts "     #{injury.name.camelcase}"
-          puts "          event: #{injury.event.name}"
-          puts "               date of injury: #{injury.event.date_occurred}"
+          puts <<~HEREDOC
+          * #{injury.athlete.name}
+               injury:#{injury.name}
+                    event: #{injury.event.name}
+                         date of injury: #{injury.event.date_occurred}
+          HEREDOC
         end
       end
     end

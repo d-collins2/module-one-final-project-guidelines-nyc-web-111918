@@ -3,10 +3,12 @@ require 'json'
 require 'pry'
 # require_all 'lib/models'
 
+#-------> KEEP <--------
 # def response_hash(url) #hash returned from the API
 #   response_string = RestClient.get(url)
 #   JSON.parse(response_string)
 # end
+#-------> KEEP <--------
 
 def player_information(url)
   #makes full name of athlete using firstName, lastName
@@ -24,7 +26,6 @@ def player_information(url)
     binding.pry
   end
   players_hash
-end
-#example returns
+end #example returns
 #=> {"Chris Boucher"=>["sprained left ankle", "GSW"],
  #"Andre Iguodala"=>["right leg contusion", "GSW"]}
