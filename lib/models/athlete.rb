@@ -11,7 +11,7 @@ class Athlete < ActiveRecord::Base
         athlete.injuries.each do |injury|
           puts <<~HEREDOC
           * #{injury.athlete.name}
-               injury:#{injury.name}
+               injury: #{injury.name}
                     event: #{injury.event.name}
                          date of injury: #{injury.event.date_occurred}
           HEREDOC

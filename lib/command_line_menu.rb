@@ -1,41 +1,3 @@
-def menu_options
-  input = gets.chomp
-
-  if input == "1" || input == "search by athlete" || input == "athlete"
-    get_athlete_from_user
-  elsif input == "2" || input == "search by event" || input == "event"
-    get_event_from_user
-  elsif input == "3" || input == "search by injuries" || input == "injuries"
-    get_injuries
-  elsif input == "4" || input == "see all data" || input == "all"
-    get_all_info_menu
-  elsif input == "5" || input == "export all data to text file" || input == "export"
-    export_data_to_txt_file
-  elsif input == "6" || input == "search by date" || input == "date"
-    get_info_by_date
-  elsif input == "7" || input == "exit"
-    puts "goodbye"
-    exit
-  end
-end
-
-def get_all_info_menu_options
-  input = gets.chomp
-
-  if input == "1" || input == "see all athletes" || input == "athlete"
-    get_athlete_info
-  elsif input == "2" || input == "see all events" || input == "event"
-    get_event_info
-  elsif input == "3" || input == "see all injuries" || input == "injuries"
-    get_injuries_info
-  elsif input == "4" || input == "see all data" || input == "all"
-    get_all_info
-  elsif input == "5" || input == "main menu" || input == "menu"
-    system("clear")
-    welcome
-  end
-end
-
 # ------> Information <------
 def get_athlete_from_user
   puts "please enter an athlete's name:"
@@ -76,7 +38,7 @@ end
 # ------> Information End <------
 
 # ------> All Data Lists <------
-def get_all_info
+def get_all_info #see all data
   clear_f
   Injury.return_all_info
   get_info_menu

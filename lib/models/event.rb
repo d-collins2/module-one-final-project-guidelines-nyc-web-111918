@@ -19,8 +19,15 @@ class Event < ActiveRecord::Base
   end
 
   def self.get_event_names
-    sorted = self.all.sort_by{|event| event.name}
-    sorted_events = sorted.map { |event| event.name}.uniq
-    sorted_events.each { |event_name| puts "* #{event_name}"}
+    sorted = self.all.sort_by{|event| event.name }
+    sorted_events = sorted.map { |event| event.name }.uniq
+    sorted_events.each { |event_name| puts "* #{event_name}" }
   end
+
+  def self.get_date
+    sorted = self.all.sort_by{|event| event.date_occurred }
+    sorted_dates = sorted.map { |event| event.date_occurred }.uniq.reverse
+    sorted_dates.each { |date| puts "* #{date}" }
+  end
+
 end #end of Event class
