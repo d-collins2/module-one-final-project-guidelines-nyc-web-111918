@@ -17,13 +17,16 @@ class Injury < ActiveRecord::Base
   end
 
   def self.only_injury_info
-    sorted = self.all.sort_by{ |injury| injury.name}
-    sorted_injuries = sorted.map { |injury| injury.name}.uniq
-    sorted_injuries.each { |injury_name| puts "* #{injury_name}"}
+    self.all_injuries.each { |injury_name| puts "* #{injury_name}" }
+  end
+
+  def self.all_injuries
+    sorted = self.all.sort_by{ |injury| injury.name }
+    sorted_injuries = sorted.map { |injury| injury.name }.uniq
   end
 
   def self.return_all_info
-    sorted = self.all.sort_by { |injury| injury.athlete.name}
+    sorted = self.all.sort_by { |injury| injury.athlete.name }
     sorted.each do |injury|
     puts <<~HEREDOC
       * #{injury.athlete.name}
@@ -48,7 +51,7 @@ class Injury < ActiveRecord::Base
       HEREDOC
       injury_strings << string
     end
-    File.open("#{date}", "w") { |datafile| datafile.puts injury_strings}
+    File.open("#{date}", "w") { |datafile| datafile.puts injury_strings }
   end
 
   def self.search_by_date(date)

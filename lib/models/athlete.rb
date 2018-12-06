@@ -5,8 +5,6 @@ class Athlete < ActiveRecord::Base
   def self.get_injuries(athlete_name)
     puts ""
     self.all.find do |athlete|
-
-
       if athlete.name.downcase == athlete_name
         athlete.injuries.each do |injury|
           puts <<~HEREDOC
@@ -21,8 +19,12 @@ class Athlete < ActiveRecord::Base
   end
 
   def self.get_player_names
-    sorted = self.all.sort_by{|event| event.name.downcase}
-    sorted.each { |player| puts "* #{player.name}" }
+    # binding.pry
+    self.all_athletes.each { |athlete| puts "* #{athlete}" }
   end
 
+  def self.all_athletes
+    sorted = self.all.sort_by { |athlete| athlete.name.downcase }
+    sorted.map { |athlete| athlete.name.downcase }.uniq
+  end
 end #end of Athlete class

@@ -1,32 +1,66 @@
 # ------> Information <------
 def get_athlete_from_user
-  puts "please enter an athlete's name:"
-  # use gets to capture the user's input. This method should return that input, downcased.
-  athlete_name = gets.chomp.downcase
-  Athlete.get_injuries(athlete_name)
-  welcome
+  puts "please enter an athlete's name"
+  puts "or type 'exit' to return to main menu:"
+  athlete = gets.chomp.downcase
+  athletes = Athlete.all_athletes
+
+  if athletes.include?(athlete)
+    Athlete.get_injuries(athlete)
+    welcome
+  elsif athlete == "exit"
+    welcome
+  else
+    get_athlete_from_user
+  end
 end
 
 def get_event_from_user
-  puts "please enter an event's name:"
-  # use gets to capture the user's input. This method should return that input, downcased.
-  event_name = gets.chomp.downcase
-  Event.get_injuries(event_name)
-  welcome
+  puts "please enter an event"
+  puts "or type 'exit' to return to main menu:"
+  event = gets.chomp.downcase
+  events = Event.all_events
+
+  if events.include?(event)
+    Event.get_injuries(event)
+    welcome
+  elsif event == "exit"
+    welcome
+  else
+    get_event_from_user
+  end
 end
 
 def get_injuries
-  puts "please enter an injury:"
-  injury_name = gets.chomp.downcase
-  Injury.get_info(injury_name)
-  welcome
+  puts "please enter an injury"
+  puts "or type 'exit' to return to main menu:"
+  injury = gets.chomp.downcase
+
+  injurys = Injury.all_injuries
+  if injurys.include?(injury)
+    Injury.get_info(injury)
+    welcome
+  elsif injury == "exit"
+    welcome
+  else
+    get_injuries
+  end
 end
 
 def get_info_by_date
-  puts "please enter a date in YYYY-MM-DD format:"
+  puts "please enter a date in YYYY-MM-DD format"
+  puts "or type 'exit' to return to main menu:"
   date = gets.chomp.downcase
-  Injury.search_by_date(date)
-  welcome
+
+  dates = Event.get_date_info #making array of dates
+  if dates.include?(date)
+    Injury.search_by_date(date)
+    welcome
+  elsif date == "exit"
+    welcome
+  else
+    get_info_by_date
+  end
 end
 
 def export_data_to_txt_file
@@ -111,10 +145,7 @@ def get_info_menu
   puts ""
   get_all_info_menu
 end
-
 #------>Helper Methods End<------
-
-
 def search
   puts "Would you like to search current list?(Y / N)"
   input = gets.chomp.downcase
