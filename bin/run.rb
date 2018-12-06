@@ -44,5 +44,4 @@ url = {
 }
 system("clear")
 welcome
-
 puts "Goodbye!"

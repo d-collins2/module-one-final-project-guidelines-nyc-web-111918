@@ -29,13 +29,62 @@ class Injury < ActiveRecord::Base
     sorted = self.all.sort_by { |injury| injury.athlete.name }
     sorted.each do |injury|
     puts <<~HEREDOC
-      * #{injury.athlete.name}
+      * #{injury.athlete.name} [id: #{injury.athlete.id}]
+           injury: #{injury.name} [id: #{injury.id}]
+                event: #{injury.event.name} [id: #{injury.event.id}]
+                     date of injury: #{injury.event.date_occurred} [id: #{injury.event.id}]
+      HEREDOC
+    end
+  end
+
+  def self.return_all_info_with_athlete_id
+    sorted = self.all.sort_by { |injury| injury.athlete.name }
+    sorted.each do |injury|
+    puts <<~HEREDOC
+      * #{injury.athlete.name} [id: #{injury.athlete.id}]
            injury: #{injury.name}
                 event: #{injury.event.name}
                      date of injury: #{injury.event.date_occurred}
       HEREDOC
     end
   end
+
+  def self.return_all_info_with_injury_id
+    sorted = self.all.sort_by { |injury| injury.athlete.name }
+    sorted.each do |injury|
+    puts <<~HEREDOC
+      * #{injury.athlete.name}
+           injury: #{injury.name} [id: #{injury.id}]
+                event: #{injury.event.name}
+                     date of injury: #{injury.event.date_occurred}
+      HEREDOC
+    end
+  end
+
+  def self.return_all_info_with_event_id
+    sorted = self.all.sort_by { |injury| injury.athlete.name }
+    sorted.each do |injury|
+    puts <<~HEREDOC
+      * #{injury.athlete.name}
+           injury: #{injury.name}
+                event: #{injury.event.name} [id: #{injury.event.id}]
+                     date of injury: #{injury.event.date_occurred}
+      HEREDOC
+    end 
+  end
+
+  def self.return_all_info_with_date_id
+    sorted = self.all.sort_by { |injury| injury.athlete.name }
+    sorted.each do |injury|
+    puts <<~HEREDOC
+      * #{injury.athlete.name}
+           injury: #{injury.name}
+                event: #{injury.event.name}
+                     date of injury: #{injury.event.date_occurred} [id: #{injury.event.id}]
+      HEREDOC
+    end
+  end
+
 
   def self.export_data_to_txt_file
     date = DateTime.now
