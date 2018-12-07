@@ -9,3 +9,4 @@ gem "database_cleaner"
 gem 'rest-client'
 gem 'json'
 gem 'artii'
+gem 'colorize'

@@ -3,13 +3,13 @@ require_relative "command_line_menu"
 def welcome
   puts ""
   a = Artii::Base.new :font => 'slant'
-  puts a.asciify('WELCOME!')
+  puts a.asciify('TRILLEON').colorize(String.colors.sample)
   main_menu
 end
 
 def main_menu
-  puts "            MAIN MENU"
-  puts "     please choose an option"
+  puts "            MAIN MENU".colorize(String.colors.sample).bold
+  puts "     please choose an option".colorize(String.colors.sample).bold
   options = ["search by athlete", "search by event", "search by injury", "search by date", "see all data", "edit entries", "export all data to text file",  "exit"]
   array_of_options(options)
   menu_options
@@ -18,8 +18,8 @@ end
 
 def get_all_info_menu
   puts ""
-  puts "              all information menu"
-  puts "        which data would you like to see?"
+  puts "              ALL INFORMATION MENU".colorize(String.colors.sample).bold
+  puts "        which data would you like to see?".colorize(String.colors.sample).bold
   options = ["see all athletes", "see all events", "see all injuries", "date information", "see all data", "main menu"]
   array_of_options(options)
   get_all_info_menu_options
@@ -28,7 +28,7 @@ end
 
 def edit_entries_menu_gui
   puts ""
-  puts "              edit entries menu"
+  puts "              EDIT ENTRIES MENU".colorize(String.colors.sample).bold
   options = ["create new entry", "update athlete name", "update injury name", "update event name", "update date", "delete entry", "main menu"]
   array_of_options(options)
   edit_entries_menu
@@ -37,7 +37,7 @@ end
 
 def array_of_options(options)
   options.each_with_index do |option, index|
-    puts "[#{index + 1}]....................#{option}"
+    puts "[#{index + 1}]....................#{option}".colorize(String.colors.sample)
   end
 end
 

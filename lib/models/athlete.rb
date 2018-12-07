@@ -7,7 +7,7 @@ class Athlete < ActiveRecord::Base
     self.all.find do |athlete|
       if athlete.name.downcase == athlete_name
         athlete.injuries.each do |injury|
-          puts <<~HEREDOC
+          puts <<~HEREDOC.colorize(String.colors.sample)
           * #{injury.athlete.name}
                injury: #{injury.name}
                     event: #{injury.event.name}
@@ -19,7 +19,6 @@ class Athlete < ActiveRecord::Base
   end
 
   def self.get_player_names
-    # binding.pry
     self.all_athletes.each { |athlete| puts "* #{athlete}" }
   end
 

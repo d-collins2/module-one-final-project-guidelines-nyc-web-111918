@@ -7,12 +7,29 @@ class Event < ActiveRecord::Base
     Event.all.each do |event|
       if event.name.downcase == event_name
         event.injuries.each do |injury|
-          puts <<~HEREDOC
+          puts <<~HEREDOC.colorize(String.colors.sample)
           * #{injury.event.name}
                injuries: #{injury.name}
                     date: #{injury.event.date_occurred}
                          athlete: #{injury.athlete.name}
           HEREDOC
+        end
+      end
+    end
+  end
+
+  def self.get_injuries_by_date(date)
+    puts ""
+    Event.all.each do |event|
+      if event.date_occurred == date
+        event.injuries.each do |injury|
+          puts <<~HEREDOC.colorize(String.colors.sample)
+          * #{injury.event.date_occurred}
+               injuries: #{injury.name}
+                    event: #{injury.event.name}
+                         athlete: #{injury.athlete.name}
+          HEREDOC
+
         end
       end
     end
